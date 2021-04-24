@@ -1,5 +1,6 @@
 import React from "react"
 import {useHistory} from "react-router-dom"
+import {Page, Button,Image} from "./errorStyle"
 
 const ErrorPage = () =>{
     const history = useHistory()
@@ -8,10 +9,10 @@ const ErrorPage = () =>{
         history.push("/")
     }
     return(
-        <div>
-            <img src="https://media.giphy.com/media/l41lSoOlTm3gyLdXq/giphy.gif" alt="Algo deu errado"/>
-            <button onClick={()=>goToCharacterPage()}>Home</button>
-        </div>
+        <Page> 
+            <Button onClick={()=>goToCharacterPage()}>Home</Button>
+            <Image src="https://media.giphy.com/media/l41lSoOlTm3gyLdXq/giphy.gif" alt="Algo deu errado"/>
+        </Page>
     )
 }
 

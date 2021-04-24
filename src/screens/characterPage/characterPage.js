@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { CharacterCard, P, Dead, Alive, Unkown, Img,Page } from "./characterStyle";
+import { CharacterCard, Name, Dead, Alive, Unkown, Img,Page, Status } from "./characterStyle";
 import { useHistory } from "react-router-dom";
 
 const CharacterPage = () => {
@@ -51,10 +51,10 @@ const CharacterPage = () => {
               onClick={() => goToCharacterDetails(character)}
               key={character.id}
             >
-              <P>{character.name}</P>
+              <Name>{character.name}</Name>
               <img src={character.image} alt={character.name} />
 
-              <P>Status: {characterStatus(character.status)}</P>
+              <Status>Status:{characterStatus(character.status)}</Status>
             </CharacterCard>
           );
         })

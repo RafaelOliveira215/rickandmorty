@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import { CharacterCard, P } from "./characterDetailsStyle";
+import { CharacterCard, P, Title, Name,Page, Button,Img } from "./characterDetailsStyle";
+
 
 const CharacterDetailsPage = () => {
   const history = useHistory();
@@ -27,25 +28,25 @@ const CharacterDetailsPage = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => returnPage()}>Voltar</button>
+    <Page>
+      <Button onClick={() => returnPage()}>Voltar</Button>
 
       {episodes && character ? (
         <CharacterCard>
-          <P>{character.data.name}</P> <br />
+          <Name>{character.data.name}</Name>
           <img src={character.data.image} alt={character.name} />
-          <P>Episodios em que aparece:</P>
+          <Title>Episodios em que aparece:</Title>
           {episodes.constructor === Array ? episodes.map((episode) => {
             return <P key={episode.id}>-{episode.name}</P>;
           }):<P>-{episodes.name}</P>}
         </CharacterCard>
       ) : (
-        <img
+        <Img
           src="https://media.giphy.com/media/kyKuZzsa6bShl3SaHe/giphy.gif"
           alt="carregando"
         />
       )}
-    </div>
+    </Page>
   );
 };
 
