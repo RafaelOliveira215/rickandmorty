@@ -7,8 +7,7 @@ const CharacterDetailsPage = () =>{
     const pathParams = useParams()
     const [character,setCharacter] = useState()
     const [episodes,setEpisodes] = useState()
-   console.log(character)
-    console.log(episodes)
+    
     useEffect(()=>{
 
         axios.get(`https://rickandmortyapi.com/api/character/${pathParams.id}`).then(response=>{
@@ -25,7 +24,11 @@ const CharacterDetailsPage = () =>{
 
     return(
         <div>
-         {/* {episodes ? <div>{episodes}</div>:<span>loading</span>} */}
+         {episodes && character ? <div>{character.data.name} <img src={character.data.image}/> {episodes.map((episode)=>{
+             return(
+             <div>-{episode.name}</div>
+             )
+         })}</div>:<span>loading</span>}
          <button onClick={()=>returnPage()}>Voltar</button>
 
         </div>
