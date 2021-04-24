@@ -15,7 +15,7 @@ const Router =()=>{
             <CharacterPage/>
            </Route>
 
-           <Route exact path="/characterdetails/:id">
+           <Route exact path="/characterdetails/:id/:episodes">
             <CharacterDetailsPage/>
            </Route>
 

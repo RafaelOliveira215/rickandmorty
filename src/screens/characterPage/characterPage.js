@@ -12,8 +12,7 @@ const CharacterPage = () =>{
             setCharacters(response)
         })
     },[])
-    console.log(characters)
-   
+
     const characterStatus = (status) =>{
        if(status === "Dead"){
            return(
@@ -30,17 +29,22 @@ const CharacterPage = () =>{
        }
     }
 
-    const goToCharacterDetails = (id) =>{
-      history.push(`/characterdetails/${id}`)
+    const goToCharacterDetails = (character) =>{
+        const episodeList = []
+        character.episode.map((episode)=>{ 
+            episodeList.push(episode.match(/\d+/)[0])    
+        })
+      history.push(`/characterdetails/${character.id}/${episodeList}`)
     }
 
     return(
         <div>
          {characters ? characters.data.results.map((character)=>{
+
              return(
-                 <CharacterCard onClick={()=>goToCharacterDetails(character.id)}>
+                 <CharacterCard onClick={()=>goToCharacterDetails(character)} key={character.id}>
                      <P>{character.name}</P>
-                     <img src={character.image}/>
+                     <img src={character.image} alt={character.name}/>
                      
                      <P>Status: {characterStatus(character.status)}</P>
                  </CharacterCard>
