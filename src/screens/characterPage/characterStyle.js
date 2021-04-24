@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const Page = styled.div`
 display:grid;
 grid-template-columns: 30% 30% 30%;
+@media(max-width: 768px) {
+  display:flex;
+  margin:auto;
+  flex-direction:column;
+  }
 `;
 export const CharacterCard = styled.div`
   display: flex;

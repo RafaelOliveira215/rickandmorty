@@ -8,19 +8,19 @@ const CharacterDetailsPage = () => {
   const pathParams = useParams();
   const [character, setCharacter] = useState();
   const [episodes, setEpisodes] = useState([]);
-console.log(episodes)
+
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${pathParams.id}`)
       .then((response) => {
         setCharacter(response);
-      });
+      }).catch(()=>{history.push("/error")});
     axios
       .get(`https://rickandmortyapi.com/api/episode/${pathParams.episodes}`)
       .then((response) => {
         setEpisodes(response.data);
-      });
-  }, [pathParams.id, pathParams.episodes]);
+      }).catch(()=>{history.push("/error")});
+  }, [pathParams.id, pathParams.episodes,history]);
 
   const returnPage = () => {
     history.goBack();

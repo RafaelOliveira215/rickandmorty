@@ -2,6 +2,7 @@ import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import CharacterPage from "../screens/characterPage/characterPage";
 import CharacterDetailsPage from "../screens/characterDetailsPage/characterDetailsPage";
+import ErrorPage from "../screens/errorPage/errorPage"
 
 const Router = () => {
   return (
@@ -14,6 +15,11 @@ const Router = () => {
         <Route exact path="/characterdetails/:id/:episodes">
           <CharacterDetailsPage />
         </Route>
+
+       <Route>
+         <ErrorPage/>
+       </Route>
+
       </Switch>
     </BrowserRouter>
   );

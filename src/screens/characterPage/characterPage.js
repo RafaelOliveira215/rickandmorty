@@ -21,8 +21,8 @@ const CharacterPage = () => {
     axios.get(`https://rickandmortyapi.com/api/character/${interval(0,672)}`).then((response) => {
       setCharacters(response);
 
-    });
-  }, []);
+    }).catch(()=>{history.push("/error")});
+  }, [history]);
 
   const characterStatus = (status) => {
     if (status === "Dead") {
